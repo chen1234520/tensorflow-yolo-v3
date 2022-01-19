@@ -24,6 +24,12 @@ tf.app.flags.DEFINE_string(
 
 
 def main(argv=None):
+    FLAGS.tiny = True
+    FLAGS.class_names = "head.names"
+    FLAGS.weights_file = "weights/yolov3-tiny-2022018/yolov3-tiny_head_90000.weights"
+    FLAGS.ckpt_file = "./weights/yolov3-tiny-2022018/yolov3-tiny_head_90000.ckpt"
+
+
     if FLAGS.tiny:
         model = yolo_v3_tiny.yolo_v3_tiny
     elif FLAGS.spp:

@@ -18,7 +18,6 @@ tf.app.flags.DEFINE_string(
     'data_format', 'NCHW', 'Data format: NCHW (gpu only) / NHWC')
 tf.app.flags.DEFINE_string(
     'output_graph', 'frozen_darknet_yolov3_model.pb', 'Frozen tensorflow protobuf model output path')
-
 tf.app.flags.DEFINE_bool(
     'tiny', False, 'Use tiny version of YOLOv3')
 tf.app.flags.DEFINE_bool(
@@ -29,6 +28,12 @@ tf.app.flags.DEFINE_integer(
 
 
 def main(argv=None):
+    FLAGS.tiny = True
+    FLAGS.data_format = "NHWC"
+    FLAGS.class_names = "head.names"
+    FLAGS.weights_file = "weights/yolov3-tiny-2022018/yolov3-tiny_head_90000.weights"
+    FLAGS.output_graph = "./weights/yolov3-tiny-2022018/yolov3-tiny_head_90000.pb"
+
     if FLAGS.tiny:
         model = yolo_v3_tiny.yolo_v3_tiny
     elif FLAGS.spp:
