@@ -83,7 +83,11 @@ To run demo type this in the command line:
         1. Fraction of gpu memory to work with
 
 4. demo_list.py
+
     新增的批量测试脚本，与上面的脚本进行了以下几点修改：
+    
     1）图像resize的方式采用直接resize操作，原作者使用填充宽高保持宽比例不变，这种方式与darknet训练时候不一致.
+    
     2）相对应的，在显示检测框时也同样修改传入参数，true——> false
+    
     注意：还需要注意的是，预处理代码需要跟训练阶段保持一致(是否有归一化等操作)
